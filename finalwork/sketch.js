@@ -49,17 +49,17 @@ function draw(){
   if(clicked){
 
     stroke(255, 100);
-    strokeweight(2);
+    strokeWeight(2);
 
     let amount = animating ? progress : 1;
 
   
     for(let i =0; i < points.length; i++){
 
-      let amount = animating ? progress : 1;
+      
 
-      let ex = lerp(cx, points[i].x, progress);
-      let ey = lerp(cy, points[i].y, progress);
+      let ex = lerp(cx, points[i].x, amount);
+      let ey = lerp(cy, points[i].y, amount);
 
       line(cx, cy, ex, ey);
     }
