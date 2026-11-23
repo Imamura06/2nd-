@@ -66,6 +66,11 @@ function draw(){
 }
 
 function mouseClicked (){
+
+  if(clicked){
+    return;
+  }
+
   cx=mouseX;
   cy=mouseY;
 
