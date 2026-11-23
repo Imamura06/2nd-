@@ -5,6 +5,7 @@ let points =[]
 let cx, cy;
 let progress = 0;
 let animating = false;
+let clicked = false;
 
 function setup(){
   createCanvas (windowWidth, windowHeight);
@@ -44,14 +45,18 @@ function draw(){
   
   drawpoints();
 
-  progress += 0.02;
 
-  if(animating){
+  if(clicked){
 
     stroke(255, 100);
-    strokeWeight(2);
+    strokeweight(2);
 
+    let amount = animating ? progress : 1;
+
+  
     for(let i =0; i < points.length; i++){
+
+      let amount = animating ? progress : 1;
 
       let ex = lerp(cx, points[i].x, progress);
       let ey = lerp(cy, points[i].y, progress);
@@ -59,10 +64,14 @@ function draw(){
       line(cx, cy, ex, ey);
     }
  }
+ if(animating){ 
+  progress +=0.02
+  
   if(progress >= 1){
   progress = 1;
   animating = false;
-}
+  }
+ }
 }
 
 function mouseClicked (){
@@ -76,6 +85,7 @@ function mouseClicked (){
 
   progress=0
   animating=true
+  clicked=true
 }
 
 function drawpoints (){
